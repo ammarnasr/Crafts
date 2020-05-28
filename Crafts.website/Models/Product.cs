@@ -9,13 +9,13 @@ namespace Crafts.website.Models
 {
     public class Product
     {
-        public String Id { get; set; }
-        public String Maker { get; set; }
+        public string Id { get; set; }
+        public string Maker { get; set; }
         [JsonPropertyName("img")]
-        public String Image { get; set; }
-        public String Url { get; set; }
-        public String Title { get; set; }
-        public String Description { get; set; }
+        public string Image { get; set; }
+        public string Url { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
         public int[] Ratings { get; set; }
 
 

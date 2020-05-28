@@ -1,0 +1,69 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@using Crafts.website.Models
+@using Crafts.website.Services
+@inject JsonfileProductServices ProductService
+
+<div class="card-columns">
+    @foreach (var product in ProductService.GetProducts())
+    {
+        <div class="card">
+            <div class="card-img" style="background-image : url('@product.Image');"></div>
+            <div class="card-body">
+                <h5 class="card-title">@product.Title</h5>
+            </div>
+
+
+            <div class="card-footer">
+                <small class="text-muted">
+                    <button @onclick="(e => SelectProduct(product.Id))"
+                            data-toggle="modal" data-target="#productModal" class="btn btn-primary">More Info</button>
+                </small>
+            </div>
+        </div>
+    }
+</div>
+
+
+@if (selectProduct != null)
+{
+    <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productTitle">@selectProduct.Title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-img" style="background-image: url('@selectProduct.Image');">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">@selectProduct.Description</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+             
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+@code {
+    Product selectProduct;
+    string selectProductId;
+
+    Product SelectProduct(string productId)
+    {
+        selectProductId = productId;
+        selectProduct = ProductService.GetProducts().First(x => x.Id == selectProductId);
+        return selectProduct;
+    }
+
+}

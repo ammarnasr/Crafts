@@ -35,3 +35,7 @@ C:\Users\Ammar\source\repos\Crafts\Crafts.website\obj\Debug\netcoreapp3.1\Crafts
 C:\Users\Ammar\source\repos\Crafts\Crafts.website\obj\Debug\netcoreapp3.1\Crafts.website.pdb
 C:\Users\Ammar\source\repos\Crafts\Crafts.website\obj\Debug\netcoreapp3.1\Crafts.website.genruntimeconfig.cache
 C:\Users\Ammar\source\repos\Crafts\Crafts.website\obj\Debug\netcoreapp3.1\Crafts.website.csproj.CopyComplete
+C:\Users\Ammar\source\repos\Crafts\Crafts.website\obj\Debug\netcoreapp3.1\Crafts.website.RazorComponent.input.cache
+C:\Users\Ammar\source\repos\Crafts\Crafts.website\obj\Debug\netcoreapp3.1\RazorDeclaration\Components\ProductList.razor.g.cs
+C:\Users\Ammar\source\repos\Crafts\Crafts.website\obj\Debug\netcoreapp3.1\RazorDeclaration\Crafts.website.dll
+C:\Users\Ammar\source\repos\Crafts\Crafts.website\obj\Debug\netcoreapp3.1\Razor\Components\ProductList.razor.g.cs

@@ -13,15 +13,15 @@ namespace Crafts.website.Services
     {
         public JsonfileProductServices(IWebHostEnvironment webHostEnvironment)
         {
-            WebHostEnvironment = webHostEnvironment; 
+            WebHostEnvironment = webHostEnvironment;
         }
 
         public IWebHostEnvironment WebHostEnvironment { get; }
-        private String JsonFilename 
+        private string JsonFilename
         {
             get
             {
-                return Path.Combine(WebHostEnvironment.WebRootPath , "data" , "products.json");
+                return Path.Combine(WebHostEnvironment.WebRootPath, "data", "products.json");
             }
         }
 
@@ -34,8 +34,36 @@ namespace Crafts.website.Services
                     {
                         PropertyNameCaseInsensitive = true
                     }
-                    ); 
+                    );
             }
+        }
+
+        public void AddRating(string productId, int rating)
+        {
+            var products = GetProducts();
+            var query = products.First(x => x.Id == productId);
+            if (query.Ratings == null)
+            {
+                query.Ratings = new int[] { rating };
+            }
+            else
+            {
+                var ratings = query.Ratings.ToList();
+                ratings.Add(rating);
+                query.Ratings = ratings.ToArray();
+            }
+
+            using (var outputStream = File.OpenWrite(JsonFilename))
+            {
+
+                JsonSerializer.Serialize<IEnumerable<Product>>
+                    (
+                        new Utf8JsonWriter(outputStream, new JsonWriterOptions { SkipValidation = true, Indented = true }),
+                        products
+                    );
+
+            }
+
         }
     }
 }
